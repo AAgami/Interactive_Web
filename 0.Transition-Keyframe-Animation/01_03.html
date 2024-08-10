@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background: black;
+    }
+    @keyframes spaceship-ani {
+      /* 시작점은 생략가능 */
+      /* from {
+        
+      } */
+      to {
+        /* 처음부터 흘러가야하니까 총 2550px에 -를 붙임 */
+          background-position: -2550px 0;
+        }
+    }
+    .spaceship {
+      width: 150px;
+      height: 150px;
+      background: url('images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
+      /* 
+      gif를 사용하지 않는 이유는 깔끔한 투명화(반투명이 다 흰색으로 찌꺼기가 남음)가 지원이 되지 않아서이다
+      그리고 코드를 사용하여 제어가 가능한 것이 좋기 때문에 스프라이트 이미지를 쓰는 것이 좋다. (속도 조정 등)
+       */
+      animation: spaceship-ani 1s infinite steps(17);
+    }
+  </style>
+</head>
+<body>
+  <div class="spaceship"></div>
+</body>
+</html>
