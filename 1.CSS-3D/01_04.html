@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive Web</title>
+  <style>
+    .world {
+      /* vw vh 참고: 뷰포트의 전체 길이를 100으로 한다면, 그 중의 80을 하겠다의 뜻 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80vw;
+      height: 80vh;
+      background: gray;
+      perspective: 500px;
+    }
+    .card {
+      position: relative;
+      width: 100px;
+      height: 150px;
+      margin: 1em;
+      /* rem은 무조건 루트인 폰트 사이즈 기준 */
+      transform: rotateY(0deg);
+      transition: 0.5s;
+      transform-style: preserve-3d;
+      /* transform-origin: 0% 0%; */
+    }
+    .card-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100px;
+      height: 150px;
+      margin: -75px 0 0 -50px;
+      /* em으로 한 이유는 폰트 사이즈의 변화에 따라서 그 결과의 절반만 함 */
+      border-radius: 0.5em;
+      font-size:  1.5rem;
+      /* 브라우저마다 접두어가 다 다름. ex) -ms- -o- -moz-*/
+      /* 사파리. 사파리에는 웹킷 접두어가 필요*/
+      -webkit-backface-visibility: hidden;
+      /* 표준 스타일은 가장 마지막에 둘 것 */
+      backface-visibility: hidden;
+      transition: 0.5s;
+    }
+    .card-side-front {
+      z-index: 1;
+      background:  white;
+    }
+    .card-side-back {
+      background: red; 
+      transform: rotateY(180deg);
+    }
+    .world:hover .card-side-front{
+      transform: rotateY(180deg);
+    }
+    .world:hover .card-side-back{
+      transform: rotateY(360deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="world">
+    <div class="card-side card-side-front">F</div>
+    <div class="card-side card-side-back">B</div>
+  </div>
+</body>
+</html>
