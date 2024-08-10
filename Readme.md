@@ -1,6 +1,4 @@
 # Interactive Web Study
----
-
 
 인프런의 강의를 보며 공부합니다.
 
