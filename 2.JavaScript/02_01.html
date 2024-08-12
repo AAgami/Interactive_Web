@@ -22,12 +22,15 @@
             cursor: pointer;
         }
         .characters .ilbuni {
-            display: inline-block;
+            display: flex;
+            /* 손가락 모양 */
+            align-items: center;
         }
         .special {
             border: 10px dashed red;
         }
     </style>
+        <!-- <script async src="ex.js"></script> -->
 </head>
 <body>
     <div class="characters">
@@ -40,20 +43,23 @@
         <div class="ilbuni c">
             <img src="Interactive_section4-js-start/images/ilbuni_2.png" alt="일분이">
         </div>
+        <div class="ilbuni d">
+            <img src="Interactive_section4-js-start/images/ilbuni_3.png" alt="일분이">
+        </div>
     </div>
-    <div class="ilbuni d">
-        <img src="Interactive_section4-js-start/images/ilbuni_3.png" alt="일분이">
-    </div>
-
-    <script>
+     <script>
       (function() {
-        const ilbuni = document.querySelector('.ilbuni.c');
-       const clickIlbuniHandler = () => {
-        ilbuni.classList.toggle('special');
-       }
-        ilbuni.addEventListener('click', clickIlbuniHandler);
+        const characters = document.querySelector(".characters")
+        function clickHandler(e) {
+            // e는 마우스 포지션, 현재 상태들을 보여줌
+            // e.currentTarget과 this의 결과물은 동일
+            // console.log(this)
+            // console.log(e.currentTarget);
+            // 내가 직접적으로 클릭한 타겟
+            // console.log(e.target)
+        }
+        characters.addEventListener('click', clickHandler);
       })();
-      
-    </script>
+     </script>
 </body>
 </html>
