@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    img {
+      max-width: 100%;
+    }
+    .content {
+      height: 1000vh;
+      padding: 20%;
+      background: yellowgreen;
+    }
+    .output {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      font-size: 2rem;
+      font-weight: 200;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .cat {
+      width: 100px;
+      margin: 20px auto;
+      transition: 1s;
+    }
+    .cat.zoom {
+      transform: scale(2);
+    }
+  </style>
+</head>
+<body>
+  <div class="output">output</div>
+  <div class="content">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur odio tenetur excepturi nostrum illum nulla, saepe sunt ullam numquam molestiae vel tempore dicta error maxime ut optio distinctio voluptatum est rem nesciunt aperiam aliquid? Possimus quis deserunt omnis exercitationem facilis nulla hic, officiis nesciunt ipsa esse provident quos nam perspiciatis dicta iste similique quibusdam quo. A neque veritatis voluptates at, odit tenetur placeat doloremque delectus saepe, ex necessitatibus sapiente voluptas debitis odio modi amet eaque voluptatem tempore magnam aliquid. Voluptas at officia dolor earum neque, molestiae labore perspiciatis deserunt corporis veritatis est quae ducimus distinctio voluptatem vitae. At, repellendus tenetur!
+    </p>
+    <figure class="cat">
+      <img src="images/cat_2.png" alt="춘식이">
+    </figure>
+  </div>
+
+  <script>
+    (function(){
+      const outputElem = document.querySelector('.output');
+      const catElem = document.querySelector('.cat');
+
+      function showValue() {
+        let posY = catElem.getBoundingClientRect().top;
+        outputElem.innerHTML = posY;
+        console.log(window.innerHeight);
+        if (posY < window.innerHeight * 0.2) {
+          catElem.classList.add('zoom');
+        } else {
+          catElem.classList.remove('zoom');
+        }
+      }
+      window.addEventListener('scroll', function(){
+        outputElem.innerHTML = ''
+         + '</strong> 스크롤양: <strong>'
+        + window.scrollY
+        + '</strong> / 고양이 offsetTop: <strong>'
+        + catElem.offsetTop
+         + '</strong> / getBoundingClientRect: <strong>'
+        + catElem.getBoundingClientRect().top
+        + '</strong>'
+        showValue();
+      });
+    })();
+  </script>
+</body>
+</html>
