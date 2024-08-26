@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn {
+      fonr-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn">취소</button>
+  <script>
+    let timeId;
+    let n = 0;
+    const btn = document.querySelector('.btn')
+    
+    function sample() {
+      n++;
+      console.log('sample!');
+      if (n > 200) {
+        return;
+      }
+      // requestAnimationFrame
+      // requestAnimationFrame는 함수 안에서만 실행하면 반복문처럼, 바깥 전역에서는 setTimeout처럼 사용가능.
+      timeId = requestAnimationFrame(sample);
+    }
+    sample();
+    // setTimeout
+    // 1/1000초 기준으로 입력한 시간 이후에 실행해주는 함수
+    // timeId = setTimeout(sample, 3000);
+
+    // setInterval    
+    // setInterval(fun, 1000) -> 1초(1000/1000초) 기준으로 한번씩 반복한다. 시간 없으면 무한반복
+    // timeId = setInterval(sample, 1000);
+
+    btn.addEventListener('click', function(){
+      // clearTimeout -> setTimeout 예약을 중지시킨다.
+      // clearTimeout(timeId);
+
+      // clearInterval -> setInterval 예약을 중지시킨다.
+      // clearInterval(timeId);
+
+      // cancelAnimationFrame -> requestAnimationFrame 예약을 중지시킨다.
+      cancelAnimationFrame(timeId);
+    });
+  </script>
+</body>
+</html>
